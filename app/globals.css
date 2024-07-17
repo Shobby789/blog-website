@@ -1,0 +1,135 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  font-family: "Poppins", sans-serif;
+}
+
+:root {
+  --backgroundColor: black;
+  --textColor: black;
+}
+
+[data-theme="light"] {
+  background-color: var(--backgroundColor);
+  color: var(--textColor);
+}
+
+[data-theme="dark"] {
+  --backgroundColor: black;
+  --textColor: white;
+}
+
+.bg {
+  background: var(--backgroundColor);
+}
+
+.text {
+  color: var(--textColor);
+}
+
+.padding-horizontal {
+  @apply px-4 md:px-8 lg:px-16 2xl:px-32;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  @apply bg-[#fdfdfd];
+  /* background-color: var(--backgroundColor); */
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  /* @apply bg-[#555]; */
+  @apply bg-indigo-600;
+}
+
+/* loader */
+.spinner {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: radial-gradient(farthest-side, rgb(99 102 241) 94%, #0000) top/9px
+      9px no-repeat,
+    conic-gradient(#0000 30%, rgb(99 102 241));
+  -webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - 9px), #000 0);
+  animation: spinner-c7wet2 1s infinite linear;
+}
+
+@keyframes spinner-c7wet2 {
+  100% {
+    transform: rotate(1turn);
+  }
+}
+
+/* theme toggler */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: rgb(79 70 229);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px rgb(79 70 229);
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
